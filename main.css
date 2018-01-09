@@ -1,0 +1,167 @@
+.navbar-default {
+    background-color: white;
+    border: 0;
+   	margin-top: 15px;
+   	margin-left: 8%;
+   	margin-right: 8%;
+}
+
+.navbar-default .navbar-brand {
+	font-size: 25px;
+}
+
+.navbar-default .navbar-nav{
+	padding-right: 0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	font-size: 16px;
+	margin-left: 35px;
+	margin-right: 0px;
+	padding-right: 0px;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	text-decoration: underline;
+    text-decoration-color: #197319;
+}
+
+#active{
+	font-weight: 500;
+}
+
+.row{
+	margin-left: 8%;
+	margin-right: 8%;
+	margin-top: 10px;
+}
+
+.row-banner{
+	margin-right: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.leftcol{
+	padding-right: 30px;
+}
+
+.rightcol{
+	padding-left: 30px;
+	padding-right: 0px;
+}
+
+#invision{
+	margin-top: 100px;
+}
+
+.col-xs-12 .rightcol{
+	padding-left: 0px;
+}
+
+.graph{
+	margin-top: 0px;
+	position: relative;
+}
+
+body{
+	font-family: 'Catamaran', sans-serif;
+	font-weight: 300;
+	margin-top: 25px;
+	line-height: 25px;
+	color: #3f3f3f;
+}
+
+#banner{
+	margin-top: 50px;
+}
+
+h1, h2, h3{
+	font-size: 20px;
+	margin-top: 70px;
+	margin-bottom: 0px;
+	font-weight: 500;
+}
+
+p{
+	margin-top: 15px;
+	margin-bottom: 0px;
+	font-size: 16px;
+}
+
+ul {
+	margin-top: 15px;
+	font-size: 16px;
+}
+
+.lists{
+	margin-top: 10px;
+}
+
+a{
+	color: #3f3f3f;
+}
+
+#chart1{
+	display: block;
+}
+
+#chart2{
+	display: none;
+}
+
+#chart3{
+	display: none;
+}
+
+#chart4{
+	display: none;
+}
+
+.button-nav{
+	position: absolute;
+	left: 0;
+	bottom: 50%;
+	opacity: 0.5;
+}
+
+.button-nav-r{
+	position: absolute;
+	right: 0;
+	bottom: 50%;
+	opacity: 0.5;
+}
+
+.img-responsive{
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+video{
+	width: 70%;
+	height: auto;
+	border: 1px solid black;
+}
+.under_images{
+	margin-top: 15px;
+}
+
+#about{
+	margin-top: 100px;
+}
+
+hr{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#footer{
+	margin-top: 100px;
+	bottom: 0px;
+	text-align: center;
+	font-size: 12px;
+}
