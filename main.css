@@ -26,6 +26,10 @@
     text-decoration-color: #197319;
 }
 
+b{
+	font-weight: 400;
+}
+
 #active{
 	font-weight: 500;
 }
