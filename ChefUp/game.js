@@ -6,20 +6,37 @@ var key = false;
 var portionUpdate = "";
 var handUpdate = "";
 var cookUpdate = "";
-var cookUpdate1 = "";
+// var cookUpdate1 = "";
+var doneUpdate = "";
 var onionClick = 0;
 var mixLevel = "one";
-sessionStorage.portionGameScore = 0;
-sessionStorage.timeGameScore = "";
+var pastaDoneness = 0;
+
+var portionGameScore = 0;
+
+var meatCookTime = 0;
+var timeGameScore = 0;
+
 
 var hand = "closed";
 var cuttingPressed = false;
+
+lv1Passed = false;
+lv2Passed = false;
+lv3Passed = false;
+lv4Passed = false;
+lv5Passed = false; 
+
+var pastaAlDente = false;
+var pastaHard = false;
+var pastaSoft = false;
 
 // hand game
 // var hand = "closed";
 // var handImg = document.getElementById('cuttingHand');
 
 $(document).ready(function(){
+	// clear();
 	// intro page
 	// var introPage = $('#introPage')
 	var introPage = document.getElementById('introPage');
@@ -27,6 +44,7 @@ $(document).ready(function(){
 	// start page
 	// var playPage = $('#playPage')
 	var playPage = document.getElementById('playPage');
+
 	// player clicks play
 	play.onclick = function() {
 		console.log("play");
@@ -38,6 +56,7 @@ $(document).ready(function(){
 
 	var yes = document.getElementById('yesButton');
 	var selectPage = document.getElementById('selectPage');
+
 	// player clicks Yes
 	yes.onclick = function() {
 	    playPage.style.visibility = "hidden";
@@ -72,25 +91,31 @@ $(document).ready(function(){
 		mixLesson.style.visibility = "hidden";
 		mixGame.style.visibility = "hidden";
 		mixQuiz.style.visibility = "hidden";
-		onions.style.visibility = "hidden";
+		pastaSpaghetti.style.visibility = "hidden";
 		chick.style.visibility = "hidden";
 		sauce.style.visibility = "hidden";
+
 		// show select page
 		selectPage.style.visibility = "visible";
 		backButton.style.visibility = "hidden";
 		onionClick = 0;
-		onion.src = "onion.png"
+		onion.src = "img/onion.png"
 		mode = "selectPage";
 	}
 
 	// Get the modal
 	var modal = document.getElementById('myModal');
+	var modalPastaGood = document.getElementById('pastaGoodModal');
 	var tryAgain = document.getElementById('tryAgain');
+	var tryAgainGoodPasta = document.getElementById('tryAgainGoodPasta');
 	var takeQuiz = document.getElementById('takeQuiz');
+	var takeQuizPastaGood = document.getElementById('takeQuizGoodPasta');
 	var line = document.getElementById('line');
 	var handImg = document.getElementById('cuttingHand');
+
 	tryAgain.onclick = function() {
 	    if (mode == "portionGame"){
+	    	console.log("portionGame try again");
 	    	modal.style.display = "none";
 	        completed = false;
 	    	x_pos = 301;
@@ -104,20 +129,47 @@ $(document).ready(function(){
 	    }
 	    if (mode == "timeGame"){
 			modal.style.display = "none";
+			cookUpdate = setInterval(cookMeats, 300);
 			resetMeat();
-			cookUpdate = setTimeout(cookMeats, 1000);
-	    	cookUpdate1 = setTimeout(cookMeats, 1500);
 	    }
 	    if (mode == "mixGame"){
 	    	modal.style.display = "none";
 	    	mixLevel = "one";
-	    	mixImg.src = "potEmpty.png";
+	    	mixImg.src = "img/potEmpty.svg";
 	    	chick.style.visibility = "visible";
-	    	onions.style.visibility = "visible";
+	    	pastaSpaghetti.style.visibility = "visible";
 	    	sauce.style.visibility = "visible";
 	    }
+	}
+
+	tryAgainGoodPasta.onclick = function () {
+		pastaAlDente = false;
+		pastaHard = false;
+		pastaSoft = false;
+		pastaGoodModal.style.display = "none";
+		var doneGameEating = document.getElementById("doneGameEating");
+		var doneGameGood = document.getElementById("doneGameGood");
+		doneGameEating.src = "img/mouthOpen.svg"
+		doneGameGood.src = ""
 
 	}
+
+	takeQuizPastaGood.onclick = function () {
+		pastaGoodModal.style.display = "none";
+    	
+		pastaAlDente = false;
+		pastaHard = false;
+		pastaSoft = false;
+		
+		var doneGameEating = document.getElementById("doneGameEating");
+		var doneGameGood = document.getElementById("doneGameGood");
+		doneGameEating.src = "img/mouthOpen.svg";
+		doneGameGood.src = "";
+
+    	doneGame.style.visibility = "hidden";
+    	doneQuiz.style.visibility = "visible";
+	}
+
 	takeQuiz.onclick = function(){
 		if (mode == "portionGame"){
 			modal.style.display = "none";
@@ -147,6 +199,8 @@ $(document).ready(function(){
 	    	mixQuiz.style.visibility = "visible";
 		}
 	}
+
+
 
 	// buttons in the start page
 	var portion = document.getElementById("portion");
@@ -184,6 +238,10 @@ $(document).ready(function(){
 	var cuttingQuiz1A = document.getElementById("cuttingQuiz1A");
 	var cuttingQuiz2 = document.getElementById("cuttingQuiz2");
 	var cuttingQuiz2A = document.getElementById("cuttingQuiz2A");
+
+	var doneQuiz1 = document.getElementById("doneQuiz1");
+	var doneQuiz1A = document.getElementById("doneQuiz1A");
+
 
 	var timeQuiz1 = document.getElementById("timeQuiz1");
 	var timeQuiz1A = document.getElementById("timeQuiz1A");
@@ -229,6 +287,10 @@ $(document).ready(function(){
 		mixQuiz2A.style.display = "block";
 	}
 
+	doneQuiz1.onclick = function() {
+		console.log("here");
+		doneQuiz1A.style.display = "block";
+	}
 
 	// onion
 	var onion = document.getElementById("onion");
@@ -280,19 +342,13 @@ $(document).ready(function(){
 
 
 
-	function eating(){
-		var doneGameEating = document.getElementById("doneGameEating");
-		var doneGameGood = document.getElementById("doneGameGood");
-		doneGameEating.src = "mouthClose.png"
-		doneGameGood.src = "pastaGood.png"
-	}
 	
 	// contiue from portion lesson
 	conPortionLesson.onclick = function() {
 	    portionLesson.style.visibility = "hidden";
 	    portionGame.style.visibility = "visible";
 	    mode = "portionGame";
-	    portionUpdate = setInterval(createBar, 15);
+	    portionUpdate = setInterval(createBar, 30);
 	}
 	conCuttingLesson.onclick = function() {
 	    cuttingLesson.style.visibility = "hidden";
@@ -302,6 +358,7 @@ $(document).ready(function(){
 	}
 	conCuttingGame.onclick = function() {
 	    cuttingGame.style.visibility = "hidden";
+	    conCuttingGame.style.visibility = "hidden";
 	    cuttingGame1.style.visibility = "visible";
 	    mode = "cuttingGame1";
 	    handUpdate = setInterval(moveHand, 300);
@@ -311,14 +368,14 @@ $(document).ready(function(){
 	    hideAll();
 	    doneGame.style.visibility = "visible";
 	    mode = "doneGame";
+	    doneUpdate = setInterval(checkDoneness, 300);
 	    console.log(mode);
 	}
 	conTimeLesson.onclick = function() {
 	    hideAll();
 	    timeGame.style.visibility = "visible";
 	    mode = "timeGame";
-	    cookUpdate = setTimeout(cookMeats, 1000);
-	    cookUpdate1 = setTimeout(cookMeats, 1500);
+	    cookUpdate = setInterval(cookMeats, 300);
 	    console.log(mode);
 	}
 	conMixLesson.onclick = function() {
@@ -326,15 +383,15 @@ $(document).ready(function(){
 	    mixGame.style.visibility = "visible";
 	    mode = "mixGame";
 	    mixLevel = "one";
-	    onions.style.visibility = "visible";
+	    pastaSpaghetti.style.visibility = "visible";
 	    chick.style.visibility = "visible";
 	    sauce.style.visibility = "visible";
-	    mixImg.src = "potEmpty.png";
+	    mixImg.src = "img/potEmpty.svg";
 	    console.log(mode);
 	}
 
 	var mixImg = document.getElementById("potEmpty");
-	var onions = document.getElementById("onions");
+	var pastaSpaghetti = document.getElementById("pastaSpaghetti");
 	var chick = document.getElementById("chick");
 	var sauce = document.getElementById("sauce");
 	var mixText = document.getElementById("mixText");
@@ -343,29 +400,31 @@ $(document).ready(function(){
 	chick.onclick = function() {
 		if (mixLevel == "one"){
 			chick.style.visibility = "hidden";
-			mixImg.src = "potChic.png";
+			mixImg.src = "img/mix1.svg";
 			mixLevel = "two";
-			mixText.innerHTML = "2. Get the onions"
+			mixText.innerHTML = "2. Put in the sauce"
 		}
 		else{
 			console.log("you lost");
 		}
 	}
-	onions.onclick = function() {
+
+	sauce.onclick = function() {
 		if (mixLevel == "two"){
-			onions.style.visibility = "hidden";
-			mixImg.src = "potChicOnion.png";
+			sauce.style.visibility = "hidden";
+			mixImg.src = "img/mix2.svg";
 			mixLevel = "three";
-			mixText.innerHTML = "3. Pour the sauce"
+			mixText.innerHTML = "3. Put in the pasta"
 		}
 		else{
 			console.log("you lost mix game");
 		}
 	}
-	sauce.onclick = function() {
+
+	pastaSpaghetti.onclick = function() {
 		if (mixLevel == "three"){
-			sauce.style.visibility = "hidden";
-			mixImg.src = "potUnmix.png";
+			pastaSpaghetti.style.visibility = "hidden";
+			mixImg.src = "img/mix3.svg";
 			mixLevel = "four";
 			mixText.innerHTML = "4. Click the pot and mix"
 		}
@@ -373,12 +432,29 @@ $(document).ready(function(){
 			console.log("you lost mix game");
 		}
 	}
+
 	mixImg.onclick = function() {
 		if (mixLevel == "four"){
-			mixImg.src = "potMix.png";
+			mixImg.src = "img/mix4.svg"
+			mixLevel = "five"
+		} else 
+
+		if (mixLevel == "five"){
+			mixImg.src = "img/mix5.svg"
+			mixLevel = "six"
+		} else 
+
+		if (mixLevel == "six"){
+			mixImg.src = "img/mix6.svg"
+			mixLevel = "seven"
+		} else 
+		
+		if (mixLevel == "seven"){
 			portionFeedback.innerHTML = "Good job mixing!";
+			tryAgain.style.visibility = "hidden"
 			modal.style.display = "block";
-			portionFeedbackChef.src = "happyChef.png"
+			portionFeedbackChef.src = "img/happyChef.png"
+			lv5Passed = true;
 
 		}
 		else{
@@ -389,15 +465,15 @@ $(document).ready(function(){
 	// cuttingGame onion
 	onion.onclick = function() {
 		if (onionClick ==0){
-			onion.src = "onion1.png";
+			onion.src = "img/onion1.png";
 			onionClick = 1;
 		} 
 		else if (onionClick == 1){
-			onion.src = "onion2.png";
+			onion.src = "img/onion2.png";
 			onionClick = 2;
 		} 
 		else if (onionClick == 2){
-			onion.src = "onion3.png";
+			onion.src = "img/onion3.png";
 			conCuttingGame.style.visibility = "visible";
 		}
 	}
@@ -414,11 +490,22 @@ $(document).ready(function(){
 	var meat3 = document.getElementById("meat3");
 	var meat4 = document.getElementById("meat4");
 	var meat5 = document.getElementById("meat5");
+	var meat1CookTime = getRandomInt(0,20);
+	var meat2CookTime = getRandomInt(0,20);
+	var meat3CookTime = getRandomInt(0,20);
+	var meat4CookTime = getRandomInt(0,20);
+	var meat5CookTime = getRandomInt(0,20);
+	var cookOffset = 10;
+
 
 	function resetMeat() {
-		console.log("reset");
-		clearTimeout(cookUpdate);
-		clearTimeout(cookUpdate1);
+		timeGameScore = 0;
+		meatCookTime = 0;
+		meat1CookTime = getRandomInt(0,20);
+		meat2CookTime = getRandomInt(0,20);
+		meat3CookTime = getRandomInt(0,20);
+		meat4CookTime = getRandomInt(0,20);
+		meat5CookTime = getRandomInt(0,20);
 		meat1Level = "raw";
 		meat2Level = "raw";
 		meat3Level = "raw";
@@ -436,168 +523,122 @@ $(document).ready(function(){
 		meat1.style.left = "470px";
 	}
 
-	meat5.onclick = function() {
-		if (meat5Level == "raw"){
-			clearInterval(cookUpdate);
-			portionFeedback.innerHTML = "The meat is still raw!";
-			modal.style.display = "block";
-			portionFeedbackChef.src = "angryChef.png"
-		}
-		else { 
-			meat5Level = "clicked";
-			sessionStorage.timeGameScore += 1; 
-			meat5.style.left = "100px";
-			// console.log(sessionStorage.timeGameScore);
-		}		
-	}
-	
-	meat4.onclick = function() {
-		if (meat4Level == "raw"){
-			clearInterval(cookUpdate);
-			portionFeedback.innerHTML = "The meat is still raw!";
-			modal.style.display = "block";
-			portionFeedbackChef.src = "angryChef.png"
-		}
-		else { 
-			meat4Level = "clicked";
-			sessionStorage.timeGameScore += 1; 
-			meat4.style.left = "110px";
-			// console.log(sessionStorage.timeGameScore);
-		}		
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 	}
 
-	meat3.onclick = function() {
-		if (meat3Level == "raw"){
-			clearInterval(cookUpdate);
-			portionFeedback.innerHTML = "The meat is still raw!";
-			modal.style.display = "block";
-			portionFeedbackChef.src = "angryChef.png"
-		}
-		else { 
-			meat3Level = "clicked";
-			sessionStorage.timeGameScore += 1; 
-			meat3.style.left = "120px";
-		}		
-	}
-
-	meat2.onclick = function() {
-		if (meat2Level == "raw"){
-			clearInterval(cookUpdate);
-			portionFeedback.innerHTML = "The meat is still raw!";
-			modal.style.display = "block";
-			portionFeedbackChef.src = "angryChef.png"
-		}
-		else { 
-			meat2Level = "clicked";
-			sessionStorage.timeGameScore += 1; 
-			meat2.style.left = "130px";
-		}		
-	}
-
-	meat1.onclick = function() {
-		if (meat1Level == "raw"){
-			clearInterval(cookUpdate);
-			portionFeedback.innerHTML = "The meat is still raw!";
-			modal.style.display = "block";
-			portionFeedbackChef.src = "angryChef.png"
-		}
-		else { 
-			meat1Level = "clicked";
-			sessionStorage.timeGameScore += 1; 
-			meat1.style.left = "100px";
-			portionFeedback.innerHTML = "Great job! This is nicely cooked!";
-			modal.style.display = "block";
-			portionFeedbackChef.src = "happyChef.png"
-			resetMeat();	
-		}		
-	}
 	// timing game
 	function cookMeats(){
-		setTimeout(cookMeat1, 2600);
-		setTimeout(cookMeat2, 2100);
-		setTimeout(cookMeat3, 1500);
-		setTimeout(cookMeat4, 900);
-		setTimeout(cookMeat5, 500);
-		function cookMeat1(){
-			if (meat1Level != "clicked"){
-				if (meat1Level == "raw"){
-					meat1.src = "1done.png";
-					meat1Level = "done";
-				}
-				else if (meat1Level == "done"){
-					meat1.src = "1burnt.png";
-					meat1Level = "burnt";
-					portionFeedback.innerHTML = "The meat is burnt!";
-					modal.style.display = "block";
-					portionFeedbackChef.src = "angryChef.png"
-					resetMeat();
-				}
+
+		if (meat1Level == "clicked" && meat2Level == "clicked" && meat3Level == "clicked" && meat4Level == "clicked" && meat5Level == "clicked") {
+			clearInterval(cookUpdate);
+
+			if (timeGameScore == 0) {
+				portionFeedback.innerHTML = "None of the chicken is cooked right...";
+				tryAgain.style.visibility = "visible"
+				modal.style.display = "block";
+				portionFeedbackChef.src = "img/angryChef.png"
+			} else if (timeGameScore == 5) {
+				portionFeedback.innerHTML = "You perfectly cooked " + timeGameScore + " pieces of chicken!";
+				tryAgain.style.visibility = "hidden"
+				modal.style.display = "block";
+				portionFeedbackChef.src = "img/happyChef.png"
+				lv4Passed = true;
+			}
+			else {
+				portionFeedback.innerHTML = "You did not cook " + (5 - timeGameScore) + " pieces of chicken right.";
+				tryAgain.style.visibility = "visible"
+				modal.style.display = "block";
+				portionFeedbackChef.src = "img/angryChef.png"				
 			}
 		}
-		function cookMeat2(){
-			if (meat2Level != "clicked"){
-				if (meat2Level == "raw"){
-					meat2.src = "2done.png";
-					meat2Level = "done";
-				}
-				else if (meat2Level == "done"){
-					meat2.src = "2burnt.png";
-					meat2Level = "burnt";
-					portionFeedback.innerHTML = "The meat is burnt!";
-					modal.style.display = "block";
-					portionFeedbackChef.src = "angryChef.png"
-					resetMeat();
-				}
+
+
+		if (meat1Level != "clicked") {
+			if (meatCookTime > meat1CookTime) {
+				meat1.src = "1done.png";
+				meat1Level = "done";
+			}
+			if (meatCookTime > meat1CookTime + cookOffset) {
+				meat1.src = "1burnt.png";
+				meat1Level = "burnt";
+			}
+			meat1.onclick = function() {
+				meat1.style.left = "100px";
+				if (meat1Level == "done") {timeGameScore += 1};
+				meat1Level = "clicked";
 			}
 		}
-		function cookMeat3(){
-			if (meat3Level != "clicked"){
-				if (meat3Level == "raw"){
-					meat3.src = "3done.png";
-					meat3Level = "done";
-				}
-				else if (meat3Level == "done"){
-					meat3.src = "3burnt.png";
-					meat3Level = "burnt";
-					portionFeedback.innerHTML = "The meat is burnt!";
-					modal.style.display = "block";
-					portionFeedbackChef.src = "angryChef.png"
-					resetMeat();
-				}
+
+		if (meat2Level != "clicked") {
+			if (meatCookTime > meat2CookTime) {
+				meat2.src = "2done.png";
+				meat2Level = "done";
+			}
+			if (meatCookTime > meat2CookTime + cookOffset){
+				meat2.src = "2burnt.png";
+				meat2Level = "burnt";
+			}			
+			meat2.onclick = function() {
+				meat2.style.left = "130px";
+				if (meat2Level == "done") {timeGameScore += 1};
+				meat2Level = "clicked";
 			}
 		}
-		function cookMeat4(){
-			if (meat4Level != "clicked"){
-				if (meat4Level == "raw"){
-					meat4.src = "4done.png";
-					meat4Level = "done";
-				}
-				else if (meat4Level == "done"){
-					meat4.src = "4burnt.png";
-					meat4Level = "burnt";
-					portionFeedback.innerHTML = "The meat is burnt!";
-					modal.style.display = "block";
-					portionFeedbackChef.src = "angryChef.png"
-					resetMeat();
-				}
+
+		if (meat3Level != "clicked") {
+			if (meatCookTime > meat3CookTime) {
+				meat3.src = "3done.png";
+				meat3Level = "done";
+			}
+			if (meatCookTime > meat3CookTime + cookOffset){
+				meat3.src = "3burnt.png";
+				meat3Level = "burnt";
+			}			
+			meat3.onclick = function() {
+				meat3.style.left = "100px";
+				if (meat3Level == "done") {timeGameScore += 1};
+				meat3Level = "clicked";
 			}
 		}
-		function cookMeat5(){
-			if (meat5Level != "clicked"){
-				if (meat5Level == "raw"){
-					meat5.src = "5done.png";
-					meat5Level = "done";
-				}
-				else if (meat5Level == "done"){
-					meat5.src = "5burnt.png";
-					meat5Level = "burnt";
-					portionFeedback.innerHTML = "The meat is burnt!";
-					modal.style.display = "block";
-					portionFeedbackChef.src = "angryChef.png"
-					resetMeat();
-				}
+		
+		if (meat4Level != "clicked") {
+			if (meatCookTime > meat4CookTime) {
+				meat4.src = "4done.png";
+				meat4Level = "done";
+			}
+			if (meatCookTime > meat4CookTime + cookOffset){
+				meat4.src = "4burnt.png";
+				meat4Level = "burnt";
+			}			
+			meat4.onclick = function() {
+				meat4.style.left = "100px";
+				if (meat4Level == "done") {timeGameScore += 1};
+				meat4Level = "clicked";
 			}
 		}
+
+		if (meat5Level != "clicked") {
+			if (meatCookTime > meat5CookTime) {
+				meat5.src = "5done.png";
+				meat5Level = "done";
+			}
+			if (meatCookTime > meat5CookTime + cookOffset){
+				meat5.src = "5burnt.png";
+				meat5Level = "burnt";
+			}			
+			meat5.onclick = function() {
+				meat5.style.left = "100px";
+				if (meat5Level == "done") {timeGameScore += 1};
+				meat5Level = "clicked";
+			}
+		}
+
+		meatCookTime += 1;
+		console.log(meatCookTime);
+
 	}
 
 	// hiding all the screens
@@ -640,9 +681,45 @@ function startGame() {
 	setInterval(checkUpdates, 1000);
 }
 
+
 // checking the updates
 function checkUpdates(){
 	console.log("checking updates");
+
+	if (mode == "selectPage" && lv1Passed && lv2Passed &&  lv3Passed && lv4Passed && lv5Passed) {
+		var finalLevelButton = document.getElementById("finalLevelButton")
+		finalLevelButton.style.visibility = "visible";
+	} else {
+		var finalLevelButton = document.getElementById("finalLevelButton")
+		finalLevelButton.style.visibility = "hidden";		
+	}
+
+
+	if (lv1Passed) {
+		var portion = document.getElementById("portion");
+		portion.style.backgroundColor = "green"
+	}
+
+	if (lv2Passed) {
+		var cutting = document.getElementById("cutting");
+		cutting.style.backgroundColor = "green"
+	}
+
+	if (lv3Passed) {
+		var done = document.getElementById("done?");
+		done.style.backgroundColor = "green"
+	}
+	
+	if (lv4Passed) {
+		var time = document.getElementById("timing");
+		time.style.backgroundColor = "green"
+	}
+	
+	if (lv5Passed) {
+		var mix = document.getElementById("mixing");
+		mix.style.backgroundColor = "green"
+	}
+
 	if (mode != "portionGame"){
 		clearInterval(portionUpdate);
 	}
@@ -651,6 +728,10 @@ function checkUpdates(){
 	}
 	if (mode != "timeGame"){
 		clearInterval(cookUpdate);
+	}
+
+	if (mode != "doneGame"){
+		clearInterval(doneUpdate);
 	}
 }
 
@@ -662,7 +743,7 @@ function createBar(){
 	var line = document.getElementById('line');
 		if (!(completed)) {
 			// less than 1000 
-			if (x_pos<1000 && pressed && key==32){
+			if (x_pos<900 && pressed && key==32){
 				x_pos += 10;
 				line.style.left = x_pos + 'px';
 			} else {
@@ -672,22 +753,27 @@ function createBar(){
 		} else {
 			if (x_pos > 618){
 				portionFeedback.innerHTML = "You poured too much salt!";
+				tryAgain.style.visibility = "visible"
+
 				modal.style.display = "block";
-				portionFeedbackChef.src = "angryChef.png"
+				portionFeedbackChef.src = "img/angryChef.png"
 			}
 			else if (x_pos < 582){
 				portionFeedback.innerHTML = "You poured too little salt!";
+				tryAgain.style.visibility = "visible";
 				modal.style.display = "block";
-				portionFeedbackChef.src = "angryChef.png"
+				portionFeedbackChef.src = "img/angryChef.png"
 			}
 			else {
 				portionFeedback.innerHTML = "Good job!";
+				tryAgain.style.visibility = "hidden";
 				modal.style.display = "block";
-				portionFeedbackChef.src = "happyChef.png";
-				if (sessionStorage.portionGameScore == 0){
-					sessionStorage.portionGameScore = 1;
+				portionFeedbackChef.src = "img/happyChef.png";
+				lv1Passed = true;
+				if (portionGameScore == 0){
+					portionGameScore = 1;
 				}
-				console.log(sessionStorage.portionGameScore);
+				console.log(portionGameScore);
 			}
 		}
 }
@@ -696,29 +782,109 @@ function createBar(){
 function moveHand(){
 	var handImg = document.getElementById('cuttingHand');
 	var modal = document.getElementById('myModal');
+	console.log(hand);
 	if (!cuttingPressed){
 		if (hand == "closed"){
-			handImg.src = "handOpen.png";
+			handImg.src = "img/handOpen.svg";
 			hand = "open";
 		}
 		else {
-			handImg.src = "handClosed.png"
+			handImg.src = "img/handClosed.svg"
 			hand = "closed";
 		}
 	}
 	else {
+		console.log(hand);
 		if (hand == "open"){
+			tryAgain.style.visibility = "visible"
 			modal.style.display = "block";
-			portionFeedback.innerHTML = "You cut your fingers! Look at your helping hand!";
-			portionFeedbackChef.src = "angryChef.png"
+			portionFeedback.innerHTML = "You cut your fingers!";
+			portionFeedbackChef.src = "img/angryChef.png"
+			// console.log("you lost");
 		}
 		else {
+			tryAgain.style.visibility = "hidden"
 			modal.style.display = "block";
-			portionFeedback.innerHTML = "Good job looking at your helping hand!";
-			portionFeedbackChef.src = "happyChef.png";
+			portionFeedback.innerHTML = "Good job! You kept your fingers!";
+			portionFeedbackChef.src = "img/happyChef.png";
+			lv2Passed = true;
+			// console.log("you win");
 		}
+	}
+	// setTimeout(down, milliseconds)
+	// setTimeout(down, milliseconds)
+}
+
+var pastaAlDente = false;
+var pastaHard = false;
+var pastaSoft = false;
+
+function eating1(){
+	var doneGameEating = document.getElementById("doneGameEating");
+	var doneGameGood = document.getElementById("doneGameGood");
+	doneGameEating.src = "img/mouthMid.svg"
+	setTimeout(eating2, 300);
+}
+
+function eating2(){
+	var doneGameEating = document.getElementById("doneGameEating");
+	var doneGameGood = document.getElementById("doneGameGood");
+	var doneGameText = document.getElementById("resetText");
+
+	doneGameEating.src = "img/mouthClose.svg"
+	doneGameText.innerHTML = "<br>"
+
+	if (pastaHard) {
+		doneGameGood.src = "img/tooHard.svg"
+		doneGameText.innerHTML = "Check again in a bit."
+	}
+
+	if (pastaSoft) {
+		doneGameGood.src = "img/tooSoft.svg"
+		doneGameText.innerHTML = "Start over."
+		pastaDoneness = 0;
+	}
+
+	if (pastaAlDente) {
+		doneGameGood.src = "img/pastaGood.svg"
+		lv3Passed = true;
 	}
 
 }
 
+
+
+function checkDoneness(){
+	var potSpaghetti = document.getElementById('potSpaghetti');
+	var modal = document.getElementById('pastaGoodModal');
+	var modalContent = document.getElementById('pastaGoodModalContent')
+	var doneGameText = document.getElementById("resetText");
+
+
+	pastaDoneness += 1;
+	console.log(pastaDoneness);
+
+	potSpaghetti.onclick = function () {
+		doneGameText.innerHTML = "<br>"
+		if (pastaDoneness < 20) {
+			pastaHard = true;
+			modalContent.style.backgroundColor = 'red'
+
+			tryAgainGoodPasta.style.visibility = "visible"
+		} else 
+		if (pastaDoneness > 30) {
+			modalContent.style.backgroundColor = 'red'
+			pastaSoft = true;
+			tryAgainGoodPasta.style.visibility = "visible"
+		} else {
+			modalContent.style.backgroundColor = '#8CC63F'
+			pastaAlDente = true;
+			tryAgainGoodPasta.style.visibility = "hidden"
+		}
+
+		modal.style.display = "block";
+		setTimeout(eating1, 300);
+
+	}
+}
 

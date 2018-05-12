@@ -5,6 +5,14 @@ body{
 	margin: 0px;
 }
 
+a {
+    text-decoration: none;
+}
+
+#finalLevelButton {
+    visibility: hidden;
+}
+
 #container{
 	margin-top: 50px;
 	margin-left: auto;
@@ -36,6 +44,16 @@ body{
 	width: 1200px;
 	visibility: hidden;
 	padding-bottom: 0px;
+    overflow: hidden;
+}
+
+#selectText {
+    margin-left: 585px;
+    margin-top: 90px;
+}
+
+.pink-bg {
+    background-color: #F48571;
 }
 #doneLesson, #doneGame, #doneQuiz, #timeLesson, #timeGame, #timeQuiz, #mixLesson, #mixGame, #mixQuiz{
 	position: absolute;
@@ -48,10 +66,9 @@ body{
 }
 
 #playPage{
-	background-color: #ff6b6b;
+	background-color: #F48571;
 }
 #cuttingGame1{
-	background-color: #D3D3D3;
 }
 /*introPage*/
 #whiteSection{
@@ -67,12 +84,14 @@ body{
 	height: 450px;
 	width: 1200px;
 	top: 150px;;
-	background-color: #ff6b6b;
+	background-color: #F48571;
+    overflow: hidden;
 }
 #chefIntro{
-	position: absolute;
-	top: 50px;
-	left: 300px;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    height: 550px;
 }
 h1{
 	margin-top: 40px;
@@ -106,10 +125,17 @@ h1{
 
 /*startPage*/
 #chefStart{
-	position: absolute;
-	top: 50px;
-	left: 200px;
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    height: 550px;
 }
+
+.decorBg{
+    width: 100%;
+    height: auto;
+}
+
 #chefSpeak{
 	width: 450px;
 	position: absolute;
@@ -125,18 +151,18 @@ h1{
     font-family: 'Raleway', sans-serif;
 }
 #yesButton{
-	background-color: white;
-	color: #20bf6b;
+	background-color: #20bf6b;
+	color: white;
 	left: 200px;
 	top: 400px;
 	font-size: 18px;
 }
 #noButton{
-	background-color: white;
-	color: #eb3b5a;
-	left: 200px;
-	top: 480px;
-	font-size: 18px;
+    background-color: gray;
+    color: black;
+    left: 200px;
+    top: 480px;
+    font-size: 18px;
 }
 
 p{
@@ -147,7 +173,7 @@ p{
 	font-size: 18px;
 }
 
-#ready, #time, #mix{
+#ready, #time{
 	margin-top: 15px;
 }
 
@@ -157,7 +183,7 @@ p{
 }
 
 .button{
-	width: 70px;
+	width: 71px;
 	position: absolute;
 	top: 450px;
     background-color: #4CAF50;
@@ -207,19 +233,18 @@ p{
 /*the different skills*/
 .skill{
 	width: 300px;
-	height: 50px;
-	margin-left: auto;
+	height: 30px;
+	margin-left: 670px;
 	margin-right: auto;
-	margin-top: 30px;
-	padding: 10px 15px;
-	background-color: #ff6b6b;
+	margin-top: 17px;
+	padding: 0px 15px;
+	background-color: #fff;
 	border-radius: 5px;
-	color: white;
+	color: black;
 	cursor: pointer;
 }
 
 .skills{
-	margin-top: 40px;
 }
 
 svg{
@@ -238,14 +263,16 @@ svg{
 }
 
 #salt{
-	position: absolute;
-	top: 200px;
-	left: 500px;
+    position: absolute;
+    top: 204px;
+    left: 593px;
+    width: 200px;
 }
 #pot{
-	position: absolute;
-	top: 200px;
-	left: 400px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 800px;
 }
 
 #chef_intro{
@@ -271,6 +298,7 @@ svg{
 	background-color: #ee5253;
 	margin-top: 10px;
 	left: 300px;
+    outline: 2px black solid;
 }
 
 #green{
@@ -314,18 +342,20 @@ svg{
 #cuttingHand{
 	position: absolute;
 	margin: 0px;
-	left: 50px;
-	top: 100px;
+	left: -350px;
+	top: 200px;
 }
 #meat{
 	position: absolute;
-	top: 160px;
-	left: 680px;
+	bottom: 186px;
+    width: 394px;
+    left: 509px;
 }
 #handKnife{
 	position: absolute;
+    height: 800px;
 	top: 80px;
-	left: 780px;
+	left: 540px;
 }
 .modal {
     display: none; /* Hidden by default */
@@ -352,6 +382,9 @@ svg{
     height: 400px;
 }
 
+#pastaGoodModalContent {
+    background-color: #8CC63F;
+}
 /* The Close Button */
 .close {
     color: #aaa;
@@ -378,79 +411,169 @@ svg{
 	left: 700px;
 }
 
+#tryAgainGoodPasta{
+    margin-left: 0px;
+    left: 400px;
+}
+#takeQuizGoodPasta{
+    margin-left: 0px;
+    left: 700px;
+}
+
 /*done game*/
 #doneGameEating{
-	position: absolute;
-	top: 0px;
-	left: 500px;
+    position: absolute;
+    top: 121px;
+    right: 280px;
+    width: 350px;
 }
 #doneGameGood{
-	position: absolute;
-	top: 100px;
-	left: 200px;
+    position: absolute;
+    top: 175px;
+    left: 343px;
+    width: 200px;
 }
 
 #chickenPan{
-	position: absolute;
-	left: 400px;
-	top: 80px;
+    position: absolute;
+    left: 400px;
+    top: 80px;
 }
 #meat1{
-	position: absolute;
-	top: 150px;
-	left: 470px;
+    position: absolute;
+    top: 150px;
+    left: 470px;
 }
 #meat2{
-	position: absolute;
-	top: 270px;
-	left: 630px;
+    position: absolute;
+    top: 270px;
+    left: 630px;
 }
 #meat3{
-	position: absolute;
-	top: 150px;
-	left: 630px;
+    position: absolute;
+    top: 150px;
+    left: 630px;
 }
 #meat4{
-	position: absolute;
-	top: 390px;
-	left: 600px;
+    position: absolute;
+    top: 390px;
+    left: 600px;
 }
 #meat5{
-	position: absolute;
-	top: 350px;
-	left: 520px;
+    position: absolute;
+    top: 350px;
+    left: 520px;
 }
-#meat1:hover, #meat2:hover, #meat3:hover, #meat4:hover, #meat5:hover, #chick:hover, #onions:hover, #sauce:hover{
-	border-style: solid;
-	border-color: white;
-	border-width: 1px;
-	cursor: pointer;
+#meat1:hover, #meat2:hover, #meat3:hover, #meat4:hover, #meat5:hover, #chick:hover, #pastaSpaghetti:hover, #sauce:hover{
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    cursor: pointer;
 }
 #potEmpty{
-	position: absolute;
-	left: 200px;
-	top: 70px;
+    position: absolute;
+    left: 200px;
+    top: 70px;
+    width: 550px;
 }
 #chick{
-	position: absolute;
-	left: 850px;
-	top: 60px
+    position: absolute;
+    left: 850px;
+    top: 60px
 }
 #onions{
-	position: absolute;
-	left: 850px;
-	top: 240px
+    position: absolute;
+    left: 850px;
+    top: 240px
 }
 #sauce{
-	position: absolute;
-	left: 850px;
-	top: 400px
+    position: absolute;
+    left: 876px;
+    top: 432px;
+    width: 148px;
 }
 #mix:hover{
-	cursor: pointer;
+    cursor: pointer;
 }
-}
+
 /*.meat:hover{
-	border: white;
-	border-width: 5px;
+    border: white;
+    border-width: 5px;
 }*/
+
+
+
+#potSpaghetti {
+    position: absolute;
+    width: 400px;
+    left: 400px;
+    top: 150px;
+}
+
+#resetText {
+    position: absolute;
+    top: 250px;
+    left: 400px;
+}
+
+#pastaSpaghetti {
+    position: absolute;
+    width: 136px;
+    left: 875px;
+    top: 260px;
+}
+
+
+/*#firstGame,*/
+#secondGame,
+#thirdGame,
+#fourthGame,
+#fifthGame,
+#sixthGame,
+#seventhGame,
+#eighthGame,
+#ninethGame,
+#tenthGame,
+#eleventhGame {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    height: 600px;
+    width: 1200px;
+    visibility: hidden;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+
+#firstGame{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    height: 600px;
+    width: 1200px;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+
+#summaryText{
+    text-align: left;
+    margin-left: 600px;
+    margin-top: 50px;
+}
+
+#fishImg {
+    width: 200px;
+}
+
+#mixImg {
+    width: 200px;
+}
+
+#chefEnd {
+    height: 500px;
+    position: absolute;
+    bottom: 0px;
+    left: 100px;
+
+}
+}
