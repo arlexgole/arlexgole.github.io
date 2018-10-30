@@ -44,7 +44,6 @@ body{
 	color: #3f3f3f;
 }
 
-
 h1{
 	margin-top: 30px;
 	font-size: 30px;
@@ -98,20 +97,38 @@ h1{
 
 #projects{
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #about{
 	margin-top: 100px;
 }
 
+.leftcol{
+	padding-right: 50px;
+}
 .rightcol{
-	padding-left: 40px;
+	padding-right: 0px;
+	padding-left: 50px;
 }
 
+#second_row{
+	margin-top: 40px;
+}
 #footer{
 	margin-top: 90px;
 	text-align: center;
 	font-size: 12px;
+}
+
+/*making it responsive*/
+@media only screen and (max-width: 768px) {
+	.leftcol{
+		padding-right: 0px;
+	}
+    .rightcol{
+        padding-left: 0px;
+    }
 }
 
 
