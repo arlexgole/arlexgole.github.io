@@ -53,6 +53,13 @@ h1{
 	font-size: 20px;
 }
 
+h2{
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 25px;
+}
+
 #intro{
 	font-size: 18px;
 	margin-top: 15px;
@@ -109,7 +116,7 @@ h1{
 }
 
 .leftcol{
-	padding-right: 40px;
+	padding-right: 30px;
 }
 .rightcol{
 	padding-right: 0px;
