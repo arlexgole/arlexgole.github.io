@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		  
+  <head>
+      
       <title> MedShare </title>
       
       <!-- required tags  -->
@@ -18,150 +18,174 @@
       
       <!-- style -->
       <link rel="stylesheet" href="main.css">
+
+      <!-- css animations -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       
       <!-- favicon -->
       <link rel="icon" href="images/favicon.png">
       
-	</head>
+  </head>
   <body> 
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.html"> AG </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html"> Projects </a></li>
-                <li><a href="resume.pdf" target="_blank"> Resume </a></li>
-                <li><a href="about.html"> About </a></li>
-             </ul>
-            </div><!-- /.navbar-collapse -->
-            </div>
-        </nav>
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div id="banner">
-              <img src="images/medshare_banner.jpg" class="img-responsive" alt="Responsive image"> 
-            </div>
-          </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"> AG </a>
         </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1> Background </h1>
-            <p> November 2017 (2 weeks) </p>
-            <p> Team: Morgan Broacha, Arlex Gole, Xueting Zhang</p>
-            <p> As an assignment for the course Interaction Design Studio, we were tasked with designing a peer economy platform in the emergency response domain. By applying the human-centered design process from research to prototype development, my group created MedShare, a platform where users can order emergency medicine and devices. </p>
-          </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html"> Projects </a></li>
+            <li><a href="resume.pdf" target="_blank"> Resume </a></li>
+            <li><a href="about.html"> About </a></li>
+         </ul>
+        </div><!-- /.navbar-collapse -->
         </div>
+    </nav>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h2> My Role </h2>
-            <p> I contributed to every step of the design process from ideating and conducting research to creating the high fidelity mockups. I created the final prototype using Framer Studio. </p>
-          </div>
-        </div>
+    <!--------------- animation container --------------->
+    <div data-aos="fade-up" data-aos-duration="1000">
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-              <h3> Domain Research </h3>
-              <p> We first interviewed 12 people about their experiences with medical emergencies. We encountered many different stories from broken bones to allergy and asthma attacks. We also interviewed Emergency Medical Technicians to gain some insights about the daily situations they dealt with. 
-              <p> Based on these interviews, we realized that there was on opportunity to create a medication delivery platform as a potential peer-to-peer market. We generated different scenarios for this domain describing context, triggers, interaction methods, touchpoints, and the value being exchanged.</p>
-          </div>  
+    <!--------------- banner --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div id="banner">
+          <img src="images/medshare_banner.jpg" class="img-responsive" alt="Responsive image"> 
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-              <h3> Problem Scope </h3>
-              <ul>
-                <li class="lists"> In emergency situations, people don't have convenient access to medicine that can save their lives such as an inhaler or an EpiPen. </li>
-                <li class="lists"> These emergency devices and medicine are very expensive. </li>
-                <li class="lists"> People often forget to carry their medicine or stop carrying them. </li>
-                <li class="lists"> Many devices go unused and expire. </li>
-              </ul>
-          </div>  
-        </div>
+    <!--------------- background --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h1> Background </h1>
+        <p> November 2017 (2 weeks) </p>
+        <p> Team: Morgan Broacha, Arlex Gole, Xueting Zhang</p>
+        <p> As an assignment for the course Interaction Design Studio, we were tasked with designing a peer economy platform in the emergency response domain. By applying the human-centered design process from research to prototype development, my group created MedShare, a platform where users can order emergency medicine and devices. </p>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h3> Storyboards </h3>
-            <p> We created storyboards of selected scenarios to quickly demonstrate the problem, context, and our solution. By speed dating our storyboards, we were able to validate our concept and revise it as needed. Based on the feedback, we chose to further explore the scenario described in the storyboard below (drawn by my teammate Xueting). </p>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <img src="images/storyboard.jpg" class="img-responsive" alt="Responsive image"> 
-          </div>
-        </div>
+    <!--------------- my role --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h2> My Role </h2>
+        <p> I contributed to every step of the design process from ideating and conducting research to creating the high fidelity mockups. I created the final prototype using Framer Studio. </p>
+      </div>
+    </div>
 
+    <!--------------- domain research --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+          <h3> Domain Research </h3>
+          <p> We first interviewed 12 people about their experiences with medical emergencies. We encountered many different stories from broken bones to allergy and asthma attacks. We also interviewed Emergency Medical Technicians to gain some insights about the daily situations they dealt with. </p>
+          <p> Based on these interviews, we realized that there was on opportunity to create a medication delivery platform as a potential peer-to-peer market. We generated different scenarios for this domain describing context, triggers, interaction methods, touchpoints, and the value being exchanged.</p>
+      </div>  
+    </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-              <h3> Personas </h3>
-              <p> <img src="images/personas.jpg" class="img-responsive" alt="Competitive Analysis"> </p>
-          </div>
-        </div>
-        
-        <div class="row">          
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <h3> Screen Map </h3>
-              <p> I created a screen map to identify all the screens we might possibly need and prioritize the most important ones. </p>
-              <p> <img src="images/screen_map.jpg" class="img-responsive" alt="Competitive Analysis"> </p>
-            </div>
-        </div>
+  </div> <!--------------- animation container closed --------------->
 
-        <div class="row">   
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <h3> Wireframes </h3>
-              <p> <img src="images/wireframes.jpg" class="img-responsive" alt="Competitive Analysis"> </p>
-            </div>
-        </div>
+  <!--------------- problem scope --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+          <h3> Problem Scope </h3>
+          <ul>
+            <li class="lists"> In emergency situations, people don't have convenient access to medicine that can save their lives such as an inhaler or an EpiPen. </li>
+            <li class="lists"> These emergency devices and medicine are very expensive. </li>
+            <li class="lists"> People often forget to carry their medicine or stop carrying them. </li>
+            <li class="lists"> Many devices go unused and expire. </li>
+          </ul>
+      </div>  
+    </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h3> Final Design </h3>
-          </div>
-        </div>
+    <!--------------- storyboards --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3> Storyboards </h3>
+        <p> We created storyboards of selected scenarios to quickly demonstrate the problem, context, and our solution. By speed dating our storyboards, we were able to validate our concept and revise it as needed. Based on the feedback, we chose to further explore the scenario described in the storyboard below (drawn by my teammate Xueting). </p>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <img src="images/storyboard.jpg" class="img-responsive" alt="Responsive image"> 
+      </div>
+    </div>
 
-        <div class="large_images">
-          <div class="col-md-6 col-sm-6 col-xs-12">
-              <img src="images/medshare_screens2.jpg" class="img-responsive" alt="Example Screens"> 
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-              <img src="images/medshare_screens4.jpg" class="img-responsive" alt="Example Screens"> 
-          </div>
+    <!--------------- personas --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+          <h3> Personas </h3>
+          <p> <img src="images/personas.jpg" class="img-responsive" alt="Competitive Analysis"> </p>
+      </div>
+    </div>
+    
+    <!--------------- screen map --------------->
+    <div class="row">          
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <h3> Screen Map </h3>
+          <p> I created a screen map to identify all the screens we might possibly need and prioritize the most important ones. </p>
+          <p> <img src="images/screen_map.jpg" class="img-responsive" alt="Competitive Analysis"> </p>
         </div>
+    </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Sy4K9TTc-3g?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-          </div>
+    <!--------------- wireframes --------------->
+    <div class="row">   
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <h3> Wireframes </h3>
+          <p> <img src="images/wireframes.jpg" class="img-responsive" alt="Competitive Analysis"> </p>
         </div>
-        
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h3> Takeaways </h3>
-            <p> If there was more time, I would love to further explore the constraints regarding regulations and factor that into my design. </p>
-            <p> One thing I learned from this project was that animations can have a major impact on usability. In this project, I used animations to help improve the user experience by reducing cognitive load and providing instant feedback. </p>
-  
-          </div>
-        </div> 
+    </div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
-              <p id="footer"> Created by Arlex Gole 2018. </p>
-          </div>
+    <!--------------- final design --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3> Final Design </h3>
+      </div>
+    </div>
+
+    <div class="large_images">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+          <img src="images/medshare_screens2.jpg" class="img-responsive" alt="Example Screens"> 
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+          <img src="images/medshare_screens4.jpg" class="img-responsive" alt="Example Screens"> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Sy4K9TTc-3g?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
+      </div>
+    </div>
+    
+    <!--------------- takeaways --------------->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3> Takeaways </h3>
+        <p> If there was more time, I would love to further explore the constraints regarding regulations and factor that into my design. </p>
+        <p> One thing I learned from this project was that animations can have a major impact on usability. In this project, I used animations to help improve the user experience by reducing cognitive load and providing instant feedback. </p>
+
+      </div>
+    </div> 
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+          <p id="footer"> Created by Arlex Gole 2020. </p>
+      </div>
+    </div>
 
   </body>
+
+  <script>
+    AOS.init();
+  </script>
+  
 </html>
